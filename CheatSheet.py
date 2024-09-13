@@ -54,6 +54,24 @@ for item in range(6):
 else:
     print("Finally finished!")
 
+# CUTTING STRINGS
+stringOne = 'kitty'
+stringTwo = 'doggy'
+newWord = ""
+oldWord = ""
+n = 1
+for i in range(len(stringOne)):
+    newWord += stringTwo[:n] + stringOne[n:] # :n => characters before n / n: => characters after
+    n += 1
+    if newWord != stringOne and newWord != oldWord:
+        print(newWord)
+        oldWord = newWord
+        newWord = ""
+    else:
+        newWord = ""
+        continue
+
+
 # WHILE LOOP
 x = 0
 while x < 4:
