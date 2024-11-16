@@ -1,25 +1,20 @@
 import re
 
-def extract_title(html):
-    title_pattern = r'<title>(.*?)</title>'
-    match = re.search(title_pattern, html, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    return ""
+def html_parser():
+    html_input = input()
 
-def extract_content(html):
-    body_pattern = r'<body>(.*?)</body>'
-    match = re.search(body_pattern, html, re.DOTALL)
-    if match:
-        body_content = match.group(1)
-        content = re.sub(r'<.*?>', '', body_content)
-        return re.sub(r'\s+', ' ', content).strip()
-    return ""
+    title_pattern = r"<title>(.*?)</title>"
+    title_match = re.search(title_pattern, html_input)
+    title = title_match.group(1) if title_match else "No title"
 
-html_input = input("Enter HTML content: ")
+    body_pattern = r"<body>(.*?)</body>"
+    body_match = re.search(body_pattern, html_input, re.DOTALL)
+    body_content = body_match.group(1) if body_match else ""
 
-title = extract_title(html_input)
-content = extract_content(html_input)
+    content = re.sub(r"<.*?>", "", body_content)
+    content = re.sub(r"\s+", " ", content).strip()
 
-print(f"Title: {title}")
-print(f"Content: {content}")
+    print(f"Title: {title}")
+    print(f"Content: {content}")
+
+html_parser()
