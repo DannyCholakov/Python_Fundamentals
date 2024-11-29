@@ -14,7 +14,6 @@ def main_menu():
     print("6. Exit")
     return input("Choose an option: ")
 
-
 def main():
     user = None
     exercise_library = [
